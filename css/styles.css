@@ -15,6 +15,7 @@ html,body {
   min-height:100%;
   /*font-family: fontopoFONTOPO Regular;*/
   /*background-color: #383a3c;*/
+  background-color: #fff;
  }
 
 
@@ -192,16 +193,21 @@ video{
 
 
 #contentListContainer{
-  position: fixed;
-    right: 0;
-    top: 6%;
-    z-index: 1;
+      right: 0;
+    width: 100%;
+    left: 1%;
+    position: relative;
 }
 
 /*ellipsis plugin*/
 .ellip {
   display: block;
   height: 100%;
+  color: black;
+  background-color: #fff !important;
+}
+.ellipUl{
+  padding: 0
 }
  
 .ellip-line {
@@ -209,7 +215,11 @@ video{
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal;
-    max-width: 65%;
+    max-width: 100%;
+}
+
+.ellip-line-active{
+  background: #b9b9b9;
 }
  
 .ellip,

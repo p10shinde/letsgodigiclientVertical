@@ -375,6 +375,10 @@ window.onload = function(){
 				clearTimeout(app.secondChannelInterval);
 				if(!(Object.keys(secondChannelData).length === 0 && secondChannelData.constructor === Object)){
 						console.log('channel 2 updated')
+						$("#contentList li").removeClass('ellip-line-active')
+						$.map($("#contentList li"),function(key,val){
+							if(key.innerText == secondChannelData.resName) $(key).addClass('ellip-line-active')
+						})
 						if(getResType(secondChannelData.resName) == "image"){
 							$("." + app.visibleCampaign + " .contentHolder2").empty();
 							$("." + app.visibleCampaign + " .contentHolder2").append(app.imageElements.image2);
@@ -673,17 +677,17 @@ window.onload = function(){
 	        	app.ifLoginRequested = true;
 			    app.authorizeUser();
 			  }
-			  // var listItem = "";
+			  var listItem = "";
 			  // listItem = "<li>heelo.jpg</li><li>aksd.jpg</li><li>kwehfiwjef.jpg</li>"
-	    //       secondllSH2 = new CircularList();
-	    //       		querySnapshot.forEach(function(doc) {
-	    //           		value = doc.data();
-	    //           		listItem += "<li>" + value + "</li>"
-	    //           		secondllSH2.add(value.resName, value.duration);
-	    //     		});
-	    //       	$("#contentList").empty()
-	    //       	$("#contentList").append(listItem);
-	    //       	$("#contentList li").addClass('ellip-line');
+	          secondllSH2 = new CircularList();
+	          		querySnapshot.forEach(function(doc) {
+	              		value = doc.data();
+	              		listItem += "<li>" + value + "</li>"
+	              		secondllSH2.add(value.resName, value.duration);
+	        		});
+	          	$("#contentList").empty()
+	          	$("#contentList").append(listItem);
+	          	$("#contentList li").addClass('ellip-line');
 
 
               	console.log("Initializing Channel 2 shared2...=>" + querySnapshot.size);
