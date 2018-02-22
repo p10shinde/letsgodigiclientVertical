@@ -28,7 +28,7 @@ app.videoElements.video3 = '<video id="vid3" class="vids" width="100%" height="1
 app.videoElements.video5 = '<video id="vid5" class="vids" width="100%" height="100%" autoplay muted loop ></video>';
 app.videoElements.video6 = '<video id="vid6" class="vids" width="100%" height="100%" autoplay muted loop ></video>';
 app.videoElements.video7 = '<video id="vid7" class="vids" width="100%" height="100%" autoplay muted loop poster=\'../advt/default.png\'></video>';
-app.resourceFolder = "society";
+app.resourceFolder = app.groupName;
 app.advtFolder = 'advt';
 
 
