@@ -97,17 +97,17 @@ function getFileBasedOnTime(channel,time,callback){
 
   var format = 'hh:mm_A'
   var time = moment(new Date(time),format),
-  sh1BeforeTime = moment('09:00', format),
-  sh1AfterTime = moment('14:00', format);
+  sh1BeforeTime = moment('07:00 AM', format),
+  sh1AfterTime = moment('01:00 PM', format);
 
-  sh2BeforeTime = moment('14:00', format),
-  sh2AfterTime = moment('18:00', format);
+  sh2BeforeTime = moment('01:00 PM', format),
+  sh2AfterTime = moment('06:00 PM', format);
   if (time.isBetween(sh1BeforeTime, sh1AfterTime)) {
-    if(channel == "ch2_p") channel = 'ch2_sh1'
+    if(channel == "ch2_p") channel = 'ch2_sh1'; app.listToShow = 1;
     // if(channel == "ch3_p") channel = 'ch3_sh1'
   }
   if (time.isBetween(sh2BeforeTime, sh2AfterTime)) {
-    if(channel == "ch2_p") channel = 'ch2_sh2';
+    if(channel == "ch2_p") channel = 'ch2_sh2'; app.listToShow = 2;
     // if(channel == "ch3_p") channel = 'ch3_sh2';
   }  
 
@@ -120,13 +120,16 @@ function getFileBasedOnTime(channel,time,callback){
   if(channel == "ch2_p" || channel == "fs"){// || channel == "ch3_p")
     docRef = firebase.firestore().collection(channel).doc(app.groupName).collection('data').doc(time.split("_")[1]);
     $(".contentHolder2").parent().parent().parent().addClass('col-xs-12')
+    $(".contentHolder2").parent().parent().parent().removeClass('col-xs-11-custom')
     $(".contentHolder2").parent().parent().parent().removeClass('col-xs-11')
+
   }
 
   if(channel == "ch2_sh1" || channel == "ch2_sh2"){// || channel == "ch3_sh1" || channel == 'ch3_sh2')
       docRef = firebase.firestore().collection(channel).doc(app.groupName).collection('data');
       $(".contentHolder2").parent().parent().parent().addClass('col-xs-11')
-      $(".contentHolder2").parent().parent().parent().addClass('col-xs-12')
+      $(".contentHolder2").parent().parent().parent().addClass('col-xs-11-custom')
+      $(".contentHolder2").parent().parent().parent().removeClass('col-xs-12')
   }
   
 
