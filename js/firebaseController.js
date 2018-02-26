@@ -254,7 +254,7 @@ function getFileBasedOnTime(channel,time,callback){
           // }
           else if(channel == "ticker")
           {
-            nextFile = {startTime : time,text:"WELCOME TO PRATEEK LAUREL"};
+            nextFile = {startTime : time,text:"WELCOME TO LETSGODIGI"};
           }
           callback(nextFile);
       }

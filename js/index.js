@@ -196,34 +196,51 @@ window.onload = function(){
 	    }, 60 * 1000)
 	}
 
-	function getWeather(){
-		$.simpleWeather({
-		    location: 'Noida, UP',
-		    woeid: '',
-		    unit: 'c',
-		    success: function(weather) {
-		      html = 	`<div class="row" style="height:100%">
-		      				<div class="col-xs-12" style="padding:0;">
-		      					<div id="weatherContent"><i class="icon-`+weather.code+`"></i> `+weather.temp+`&deg;`+weather.units.temp+" "+weather.currently+`</div>
-	      					</div>`
-				    //   		<div class="col-xs-6" style="padding:0;height:100%;">
-				    //   			<div style="padding:0;font-size:1.5vw;height:50%;margin-left:10px;font-weight:700">
-				    //   				`+weather.currently+ `
-		      // 					</div>
-		      // 					<div style="padding:0;font-size:1.5vw;font-weight:700;height:50%;margin-left:10px;line-height:1;">
-				    //   				`+weather.city+ `
-		      // 					</div>
-	      	// 				</div>
-	  					// </div>`
+	// function getWeather(){
+	// 	$.simpleWeather({
+	// 	    location: 'Noida, UP',
+	// 	    woeid: '',
+	// 	    unit: 'c',
+	// 	    success: function(weather) {
+	// 	      html = 	`<div class="row" style="height:100%">
+	// 	      				<div class="col-xs-12" style="padding:0;">
+	// 	      					<div id="weatherContent"><i class="icon-`+weather.code+`"></i> `+weather.temp+`&deg;`+weather.units.temp+" "+weather.currently+`</div>
+	//       					</div>`
+	// 			    //   		<div class="col-xs-6" style="padding:0;height:100%;">
+	// 			    //   			<div style="padding:0;font-size:1.5vw;height:50%;margin-left:10px;font-weight:700">
+	// 			    //   				`+weather.currently+ `
+	// 	      // 					</div>
+	// 	      // 					<div style="padding:0;font-size:1.5vw;font-weight:700;height:50%;margin-left:10px;line-height:1;">
+	// 			    //   				`+weather.city+ `
+	// 	      // 					</div>
+	//       	// 				</div>
+	//   					// </div>`
 		  
+	// 	      $("#weather").html(html);
+	// 	      $('#weather > div > div:nth-child(1)').textfillWeather({ maxFontPixels: 1.5});
+	// 	    },
+	// 	    error: function(error) {
+	// 	    	console.debug(error);
+	// 	      $("#weather").html('<p>'+error+'</p>');
+	// 	    }
+	//   	});
+	// }
+
+	function getWeather(){
+		$.ajax({
+			url : 'http://api.openweathermap.org/data/2.5/weather?id=7279602&APPID=41d1f5866f18791648facda241386923&units=metric',
+			success : function(weather){
+			      html = 	`<div class="row" style="height:100%">
+	  				<div class="col-xs-12" style="padding:0;">
+	  					<div id="weatherContent">`+weather.main.temp+`&deg; C `+weather.weather[0].main+`</div>
+					</div>`
 		      $("#weather").html(html);
 		      $('#weather > div > div:nth-child(1)').textfillWeather({ maxFontPixels: 1.5});
-		    },
-		    error: function(error) {
-		    	console.debug(error);
-		      $("#weather").html('<p>'+error+'</p>');
-		    }
-	  	});
+			},
+			error : function(jqXHR, textstatus){
+				console.log(textstatus);
+			}
+		})
 	}
 	getWeather();
 	updateWeather();
